@@ -51,7 +51,7 @@ The module includes `AzureAdIdpAdapter` as the main adapter implementation, back
 <dependency>
     <groupId>org.fireflyframework</groupId>
     <artifactId>fireflyframework-idp-azure-ad</artifactId>
-    <version>26.02.06</version>
+    <version>26.02.07</version>
 </dependency>
 ```
 
