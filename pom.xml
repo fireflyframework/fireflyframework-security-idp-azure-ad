@@ -7,19 +7,19 @@
     <parent>
         <groupId>org.fireflyframework</groupId>
         <artifactId>fireflyframework-parent</artifactId>
-        <version>26.04.01</version>
+        <version>26.04.02</version>
         <relativePath/>
     </parent>
 
     <artifactId>fireflyframework-idp-azure-ad</artifactId>
-    <version>26.04.01</version>
+    <version>26.04.02</version>
     <packaging>jar</packaging>
 
     <name>Firefly Framework - IDP - Azure AD Implementation</name>
     <description>Azure AD (Entra ID and B2C) implementation of the Firefly IDP Adapter</description>
 
     <properties>
-        <fireflyframework-idp.version>26.04.01</fireflyframework-idp.version>
+        <fireflyframework-idp.version>26.04.02</fireflyframework-idp.version>
         <microsoft-graph.version>6.23.0</microsoft-graph.version>
         <msal4j.version>1.17.2</msal4j.version>
         <azure-identity.version>1.14.2</azure-identity.version>
