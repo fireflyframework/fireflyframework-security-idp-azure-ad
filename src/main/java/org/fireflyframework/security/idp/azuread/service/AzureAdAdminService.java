@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.fireflyframework.idp.azuread.service;
+package org.fireflyframework.security.idp.azuread.service;
 
-import org.fireflyframework.idp.dtos.*;
+import org.fireflyframework.security.idp.dtos.*;
 import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 

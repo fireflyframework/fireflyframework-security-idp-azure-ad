@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.fireflyframework.idp.azuread.util;
+package org.fireflyframework.security.idp.azuread.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;

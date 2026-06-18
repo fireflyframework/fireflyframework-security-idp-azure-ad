@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.fireflyframework.idp.azuread.adapter;
+package org.fireflyframework.security.idp.azuread.adapter;
 
-import org.fireflyframework.idp.adapter.IdpAdapter;
-import org.fireflyframework.idp.azuread.service.AzureAdAdminService;
-import org.fireflyframework.idp.azuread.service.AzureAdAuthService;
-import org.fireflyframework.idp.dtos.*;
+import org.fireflyframework.security.idp.adapter.IdpAdapter;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAdminService;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAuthService;
+import org.fireflyframework.security.idp.dtos.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

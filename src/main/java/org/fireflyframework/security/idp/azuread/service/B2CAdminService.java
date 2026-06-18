@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.fireflyframework.idp.azuread.service;
+package org.fireflyframework.security.idp.azuread.service;
 
 import com.microsoft.graph.models.ObjectIdentity;
 import com.microsoft.graph.models.PasswordProfile;
 import com.microsoft.graph.models.User;
 import com.microsoft.graph.serviceclient.GraphServiceClient;
-import org.fireflyframework.idp.azuread.client.GraphClientFactory;
-import org.fireflyframework.idp.azuread.config.AzureAdProperties;
-import org.fireflyframework.idp.dtos.CreateUserRequest;
-import org.fireflyframework.idp.dtos.CreateUserResponse;
+import org.fireflyframework.security.idp.azuread.client.GraphClientFactory;
+import org.fireflyframework.security.idp.azuread.config.AzureAdProperties;
+import org.fireflyframework.security.idp.dtos.CreateUserRequest;
+import org.fireflyframework.security.idp.dtos.CreateUserResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

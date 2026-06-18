@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.fireflyframework.idp.azuread.config;
+package org.fireflyframework.security.idp.azuread.config;
 
 import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import org.fireflyframework.idp.adapter.IdpAdapter;
-import org.fireflyframework.idp.azuread.adapter.AzureAdIdpAdapter;
-import org.fireflyframework.idp.azuread.client.GraphClientFactory;
-import org.fireflyframework.idp.azuread.client.MsalClientFactory;
-import org.fireflyframework.idp.azuread.service.AzureAdAdminService;
-import org.fireflyframework.idp.azuread.service.AzureAdAuthService;
-import org.fireflyframework.idp.azuread.service.B2CAdminService;
-import org.fireflyframework.idp.azuread.service.EntraIdAdminService;
+import org.fireflyframework.security.idp.adapter.IdpAdapter;
+import org.fireflyframework.security.idp.azuread.adapter.AzureAdIdpAdapter;
+import org.fireflyframework.security.idp.azuread.client.GraphClientFactory;
+import org.fireflyframework.security.idp.azuread.client.MsalClientFactory;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAdminService;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAuthService;
+import org.fireflyframework.security.idp.azuread.service.B2CAdminService;
+import org.fireflyframework.security.idp.azuread.service.EntraIdAdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

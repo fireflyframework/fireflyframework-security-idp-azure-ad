@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.fireflyframework.idp.azuread.adapter;
+package org.fireflyframework.security.idp.azuread.adapter;
 
-import org.fireflyframework.idp.azuread.service.AzureAdAdminService;
-import org.fireflyframework.idp.azuread.service.AzureAdAuthService;
-import org.fireflyframework.idp.dtos.*;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAdminService;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAuthService;
+import org.fireflyframework.security.idp.dtos.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

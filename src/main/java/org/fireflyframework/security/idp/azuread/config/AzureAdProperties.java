@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.fireflyframework.idp.azuread.config;
+package org.fireflyframework.security.idp.azuread.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
