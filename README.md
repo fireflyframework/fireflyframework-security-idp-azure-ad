@@ -31,8 +31,8 @@ so an application can authenticate users, manage tokens, and administer accounts
 same reactive API it would use with any other Firefly IDP provider.
 
 The IDP core defines the `IdpAdapter` contract and selects exactly one adapter at runtime via the
-`firefly.idp.provider` property. Adding this module to the classpath and setting
-`firefly.idp.provider=azure-ad` wires the Azure AD implementation automatically — no other code change is
+`firefly.security.idp.provider` property. Adding this module to the classpath and setting
+`firefly.security.idp.provider=azure-ad` wires the Azure AD implementation automatically — no other code change is
 required. This adapter sits alongside its sibling adapters
 [`fireflyframework-security-idp-keycloak`](https://github.com/fireflyframework/fireflyframework-security-idp-keycloak),
 [`fireflyframework-security-idp-aws-cognito`](https://github.com/fireflyframework/fireflyframework-security-idp-aws-cognito),
@@ -59,7 +59,7 @@ non-blocking WebFlux stack used across Firefly.
 - **Two operating modes from one adapter** — Microsoft Entra ID (`mode: entra-id`, default) and Azure AD
   B2C (`mode: b2c`), selected purely by configuration.
 - **Strategy-based admin layer** — `EntraIdAdminService` and `B2CAdminService` are wired conditionally on
-  `firefly.idp.azure-ad.mode`; B2C overrides user creation (identities array / `ObjectIdentity` local
+  `firefly.security.idp.azure-ad.mode`; B2C overrides user creation (identities array / `ObjectIdentity` local
   accounts) and password reset semantics.
 - **MSAL4J authentication** — ROPC username/password login and refresh-token flow via a
   `PublicClientApplication`; admin token acquisition via a `ConfidentialClientApplication`
@@ -71,7 +71,7 @@ non-blocking WebFlux stack used across Firefly.
 - **Local JWT introspection** — `AzureAdTokenParser` decodes and validates access tokens locally
   (expiry, `sub`/`iss`/`scp`, and `oid`/`upn` extraction) without an extra network round trip.
 - **Spring Boot auto-configuration** — `AzureAdAutoConfiguration` activates only when
-  `firefly.idp.provider=azure-ad` and MSAL4J is on the classpath; all beans are
+  `firefly.security.idp.provider=azure-ad` and MSAL4J is on the classpath; all beans are
   `@ConditionalOnMissingBean`, so any one can be overridden.
 - **Lazy, thread-safe clients** — Graph and MSAL clients are created on first use behind
   double-checked locking and released on context shutdown via `@PreDestroy`.
@@ -172,8 +172,8 @@ public class AuthFacade {
 
 ## Configuration
 
-All properties live under the `firefly.idp.azure-ad` prefix and map to `AzureAdProperties`.
-`firefly.idp.provider=azure-ad` (defined by the IDP core) is what activates this adapter.
+All properties live under the `firefly.security.idp.azure-ad` prefix and map to `AzureAdProperties`.
+`firefly.security.idp.provider=azure-ad` (defined by the IDP core) is what activates this adapter.
 
 ```yaml
 firefly:
@@ -202,19 +202,19 @@ firefly:
 
 | Property | Default | Description |
 | --- | --- | --- |
-| `firefly.idp.provider` | _(none)_ | Must be `azure-ad` to activate this adapter (defined by the IDP core). |
-| `firefly.idp.azure-ad.mode` | `entra-id` | Selects the admin strategy: `entra-id` or `b2c`. |
-| `firefly.idp.azure-ad.tenant-id` | _(required)_ | Azure AD / Entra tenant ID. |
-| `firefly.idp.azure-ad.client-id` | _(required)_ | App-registration client ID. |
-| `firefly.idp.azure-ad.client-secret` | _(required)_ | App-registration client secret. |
-| `firefly.idp.azure-ad.connection-timeout` | `30000` | MSAL4J HTTP connect timeout in milliseconds. |
-| `firefly.idp.azure-ad.request-timeout` | `60000` | MSAL4J HTTP read timeout in milliseconds. |
-| `firefly.idp.azure-ad.role-mapping.strategy` | `app-roles` | How roles are derived: `app-roles`, `groups`, or `both`. |
-| `firefly.idp.azure-ad.role-mapping.group-prefix` | `""` | Only security groups with this name prefix are mapped to roles. |
-| `firefly.idp.azure-ad.graph.scopes` | `https://graph.microsoft.com/.default` | OAuth2 scopes used when acquiring Graph tokens. |
-| `firefly.idp.azure-ad.b2c.domain` | _(none)_ | B2C login domain (e.g. `tenant.b2clogin.com`); drives the authority URL in B2C mode. |
-| `firefly.idp.azure-ad.b2c.sign-up-sign-in-policy` | `B2C_1_signup_signin` | B2C sign-up/sign-in user-flow name. |
-| `firefly.idp.azure-ad.b2c.reset-password-policy` | `B2C_1_password_reset` | B2C password-reset user-flow name. |
+| `firefly.security.idp.provider` | _(none)_ | Must be `azure-ad` to activate this adapter (defined by the IDP core). |
+| `firefly.security.idp.azure-ad.mode` | `entra-id` | Selects the admin strategy: `entra-id` or `b2c`. |
+| `firefly.security.idp.azure-ad.tenant-id` | _(required)_ | Azure AD / Entra tenant ID. |
+| `firefly.security.idp.azure-ad.client-id` | _(required)_ | App-registration client ID. |
+| `firefly.security.idp.azure-ad.client-secret` | _(required)_ | App-registration client secret. |
+| `firefly.security.idp.azure-ad.connection-timeout` | `30000` | MSAL4J HTTP connect timeout in milliseconds. |
+| `firefly.security.idp.azure-ad.request-timeout` | `60000` | MSAL4J HTTP read timeout in milliseconds. |
+| `firefly.security.idp.azure-ad.role-mapping.strategy` | `app-roles` | How roles are derived: `app-roles`, `groups`, or `both`. |
+| `firefly.security.idp.azure-ad.role-mapping.group-prefix` | `""` | Only security groups with this name prefix are mapped to roles. |
+| `firefly.security.idp.azure-ad.graph.scopes` | `https://graph.microsoft.com/.default` | OAuth2 scopes used when acquiring Graph tokens. |
+| `firefly.security.idp.azure-ad.b2c.domain` | _(none)_ | B2C login domain (e.g. `tenant.b2clogin.com`); drives the authority URL in B2C mode. |
+| `firefly.security.idp.azure-ad.b2c.sign-up-sign-in-policy` | `B2C_1_signup_signin` | B2C sign-up/sign-in user-flow name. |
+| `firefly.security.idp.azure-ad.b2c.reset-password-policy` | `B2C_1_password_reset` | B2C password-reset user-flow name. |
 
 `tenant-id`, `client-id`, and `client-secret` are validated with `@NotBlank` — the application fails fast
 at startup if any is missing. The effective MSAL authority is derived automatically:
@@ -223,9 +223,9 @@ at startup if any is missing. The effective MSAL authority is derived automatica
 
 ## How It Works
 
-- **`AzureAdAutoConfiguration`** — `@ConditionalOnProperty(firefly.idp.provider=azure-ad)` and
+- **`AzureAdAutoConfiguration`** — `@ConditionalOnProperty(firefly.security.idp.provider=azure-ad)` and
   `@ConditionalOnClass(ConfidentialClientApplication.class)`; registers the client factories, services, and
-  the `IdpAdapter` bean. The admin-service bean is chosen by `firefly.idp.azure-ad.mode`.
+  the `IdpAdapter` bean. The admin-service bean is chosen by `firefly.security.idp.azure-ad.mode`.
 - **`AzureAdIdpAdapter`** — implements `IdpAdapter`; delegates auth/token calls to `AzureAdAuthService` and
   admin calls to the selected `AzureAdAdminService`.
 - **`AzureAdAuthService`** — login (ROPC), refresh, logout, introspect, user info, and token revocation via

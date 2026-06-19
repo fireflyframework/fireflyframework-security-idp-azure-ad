@@ -24,7 +24,7 @@ import java.util.List;
 
 @Data
 @Validated
-@ConfigurationProperties(prefix = "firefly.idp.azure-ad")
+@ConfigurationProperties(prefix = "firefly.security.idp.azure-ad")
 public class AzureAdProperties {
 
     /** Azure AD mode: "entra-id" or "b2c" */

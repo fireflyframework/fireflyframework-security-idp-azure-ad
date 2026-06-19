@@ -44,7 +44,7 @@ import org.springframework.context.annotation.Bean;
  * </ul>
  */
 @AutoConfiguration
-@ConditionalOnProperty(name = "firefly.idp.provider", havingValue = "azure-ad")
+@ConditionalOnProperty(name = "firefly.security.idp.provider", havingValue = "azure-ad")
 @ConditionalOnClass(ConfidentialClientApplication.class)
 @EnableConfigurationProperties(AzureAdProperties.class)
 @Slf4j
@@ -78,7 +78,7 @@ public class AzureAdAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(AzureAdAdminService.class)
-    @ConditionalOnProperty(name = "firefly.idp.azure-ad.mode", havingValue = "entra-id", matchIfMissing = true)
+    @ConditionalOnProperty(name = "firefly.security.idp.azure-ad.mode", havingValue = "entra-id", matchIfMissing = true)
     public AzureAdAdminService entraIdAdminService(GraphClientFactory graphClientFactory,
                                                     AzureAdProperties properties) {
         log.info("Configuring Entra ID Admin Service");
@@ -87,7 +87,7 @@ public class AzureAdAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(AzureAdAdminService.class)
-    @ConditionalOnProperty(name = "firefly.idp.azure-ad.mode", havingValue = "b2c")
+    @ConditionalOnProperty(name = "firefly.security.idp.azure-ad.mode", havingValue = "b2c")
     public AzureAdAdminService b2cAdminService(GraphClientFactory graphClientFactory,
                                                 AzureAdProperties properties) {
         log.info("Configuring B2C Admin Service");
