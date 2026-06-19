@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.fireflyframework.idp.azuread.service;
+package org.fireflyframework.security.idp.azuread.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.microsoft.aad.msal4j.IAuthenticationResult;
@@ -23,10 +23,10 @@ import com.microsoft.aad.msal4j.RefreshTokenParameters;
 import com.microsoft.aad.msal4j.UserNamePasswordParameters;
 import com.microsoft.graph.models.User;
 import com.microsoft.graph.serviceclient.GraphServiceClient;
-import org.fireflyframework.idp.azuread.client.GraphClientFactory;
-import org.fireflyframework.idp.azuread.config.AzureAdProperties;
-import org.fireflyframework.idp.azuread.util.AzureAdTokenParser;
-import org.fireflyframework.idp.dtos.*;
+import org.fireflyframework.security.idp.azuread.client.GraphClientFactory;
+import org.fireflyframework.security.idp.azuread.config.AzureAdProperties;
+import org.fireflyframework.security.idp.azuread.util.AzureAdTokenParser;
+import org.fireflyframework.security.idp.dtos.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

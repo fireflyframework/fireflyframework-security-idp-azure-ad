@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.fireflyframework.idp.azuread.config;
+package org.fireflyframework.security.idp.azuread.config;
 
 import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import org.fireflyframework.idp.adapter.IdpAdapter;
-import org.fireflyframework.idp.azuread.adapter.AzureAdIdpAdapter;
-import org.fireflyframework.idp.azuread.client.GraphClientFactory;
-import org.fireflyframework.idp.azuread.client.MsalClientFactory;
-import org.fireflyframework.idp.azuread.service.AzureAdAdminService;
-import org.fireflyframework.idp.azuread.service.AzureAdAuthService;
-import org.fireflyframework.idp.azuread.service.B2CAdminService;
-import org.fireflyframework.idp.azuread.service.EntraIdAdminService;
+import org.fireflyframework.security.idp.adapter.IdpAdapter;
+import org.fireflyframework.security.idp.azuread.adapter.AzureAdIdpAdapter;
+import org.fireflyframework.security.idp.azuread.client.GraphClientFactory;
+import org.fireflyframework.security.idp.azuread.client.MsalClientFactory;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAdminService;
+import org.fireflyframework.security.idp.azuread.service.AzureAdAuthService;
+import org.fireflyframework.security.idp.azuread.service.B2CAdminService;
+import org.fireflyframework.security.idp.azuread.service.EntraIdAdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -44,7 +44,7 @@ import org.springframework.context.annotation.Bean;
  * </ul>
  */
 @AutoConfiguration
-@ConditionalOnProperty(name = "firefly.idp.provider", havingValue = "azure-ad")
+@ConditionalOnProperty(name = "firefly.security.idp.provider", havingValue = "azure-ad")
 @ConditionalOnClass(ConfidentialClientApplication.class)
 @EnableConfigurationProperties(AzureAdProperties.class)
 @Slf4j
@@ -78,7 +78,7 @@ public class AzureAdAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(AzureAdAdminService.class)
-    @ConditionalOnProperty(name = "firefly.idp.azure-ad.mode", havingValue = "entra-id", matchIfMissing = true)
+    @ConditionalOnProperty(name = "firefly.security.idp.azure-ad.mode", havingValue = "entra-id", matchIfMissing = true)
     public AzureAdAdminService entraIdAdminService(GraphClientFactory graphClientFactory,
                                                     AzureAdProperties properties) {
         log.info("Configuring Entra ID Admin Service");
@@ -87,7 +87,7 @@ public class AzureAdAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(AzureAdAdminService.class)
-    @ConditionalOnProperty(name = "firefly.idp.azure-ad.mode", havingValue = "b2c")
+    @ConditionalOnProperty(name = "firefly.security.idp.azure-ad.mode", havingValue = "b2c")
     public AzureAdAdminService b2cAdminService(GraphClientFactory graphClientFactory,
                                                 AzureAdProperties properties) {
         log.info("Configuring B2C Admin Service");
